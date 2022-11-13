@@ -1,7 +1,7 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
-import Notiflix from 'notiflix';
-import 'notiflix/dist/notiflix-3.2.5.min.css';
+import { Notify } from 'notiflix';
+
 let getEl = selector => document.querySelector(selector);
 const inputPicker = getEl('#datetime-picker');
 const btnStartEl = getEl('[data-start]');
@@ -22,7 +22,7 @@ const options = {
   onClose(selectedDate) {
     if (selectedDate[0] <= new Date()) {
       btnStartEl.disabled = true;
-      Notiflix.Notify.failure('Please choose a date in the future');
+      Notify.failure('Please choose a date in the future');
     } else {
       btnStartEl.disabled = false;
       btnStartEl.addEventListener('click', timer);
@@ -76,7 +76,6 @@ const options = {
 };
 
 flatpickr(inputPicker, options);
-
 // Список полезных модификаторов:
 
 // g - глобальная замена. Замените все экземпляры совпадающей строки в предоставленном тексте.
